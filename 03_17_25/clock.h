@@ -14,6 +14,12 @@ public:
     void incrementMinutes();
     void incrementHours();
     bool equalTime(const clockType &) const;
+    int getHour() const;
+    int getMinute() const;
+    int getSecond() const;
+    void setHour(int h);
+    void setMinute(int m);
+    void setSecond(int s);
 
 private:
     int hr;
