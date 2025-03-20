@@ -2,6 +2,7 @@
 #include <limits>
 #include <string>
 #include "clock.h"
+
 clockType clockTick();
 int main()
 {
@@ -11,28 +12,31 @@ int main()
     {
         std::cout << "huzzah" << std::endl;
     }
-    clockType myClock(53, 3, 3);
-    clockType yourClock(0, 0, 0);
+    clockType myClock(TWENTYFOUR, 53, 3, 3);
+    clockType yourClock(TWELVE, 0, 0, 0, PM);
     std::cout << x << std::endl;
-    myClock.printTime();
-    myClock.setTime(2, 2, 2);
-    myClock.printTime();
-    myClock.equalTime(yourClock);
-    yourClock.printTime();
+    std::cout << myClock.tostring() << std::endl;
+    myClock.setTime(0, 0, 0);
+    std::cout << myClock.tostring() << std::endl;
+    if (myClock.equalTime(yourClock))
+    {
+        std::cout << "The clocks are the same" << std::endl;
+    }
+    std::cout << yourClock.tostring() << std::endl;
     yourClock = myClock;
-    yourClock.printTime();
+    std::cout << yourClock.tostring() << std::endl;
     for (int i = 0; i < 120; i++)
     {
         yourClock = clockTick();
-        yourClock.printTime();
+        std::cout << yourClock.tostring() << std::endl;
     }
-    clockType allClocks[45];
+    // clockType allClocks[45];
     return 0;
 }
 
 clockType clockTick()
 {
-    static clockType theClock;
+    static clockType theClock(TWENTYFOUR);
     theClock.incrementSeconds();
     return theClock;
 }
