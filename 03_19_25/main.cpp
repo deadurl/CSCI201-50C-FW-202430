@@ -2,12 +2,17 @@
 #include <limits>
 #include <string>
 #include "clock.h"
-
+clockType clockTick();
 int main()
 {
     int x = 0;
+    timeType t = timeType::TWELVE;
+    if (t == timeType::TWELVE)
+    {
+        std::cout << "huzzah" << std::endl;
+    }
     clockType myClock(53, 3, 3);
-    clockType yourClock;
+    clockType yourClock(0, 0, 0);
     std::cout << x << std::endl;
     myClock.printTime();
     myClock.setTime(2, 2, 2);
@@ -16,17 +21,18 @@ int main()
     yourClock.printTime();
     yourClock = myClock;
     yourClock.printTime();
-    if (true)
+    for (int i = 0; i < 120; i++)
     {
-        x = 7;
-        int y = 12;
+        yourClock = clockTick();
+        yourClock.printTime();
     }
-    y = 122;
-
+    clockType allClocks[45];
     return 0;
 }
 
-void myFunc()
+clockType clockTick()
 {
-    x = 7;
+    static clockType theClock;
+    theClock.incrementSeconds();
+    return theClock;
 }

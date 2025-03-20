@@ -4,10 +4,17 @@
 #include <string>
 #include <iomanip>
 
+enum timeType
+{
+    TWELVE = 12,
+    TWENTYFOUR = 24
+};
+
 class clockType
 {
 public:
     clockType(int = 0, int = 0, int = 0);
+
     void setTime(int, int, int);
     void getTime(int &, int &, int &) const;
     void printTime() const;

@@ -64,10 +64,7 @@ int clockType::getMinute() const
     return min;
 }
 
-int clockType::getSecond() const
-{
-    return sec;
-}
+int clockType::getSecond() const { return sec; }
 
 void clockType::setHour(int h)
 {
