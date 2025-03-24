@@ -110,3 +110,8 @@ void clockType::setSecond(int s)
         sec = 0;
     }
 }
+
+clockType::clockType(int h, int m, int s)
+{
+    setTime(h, m, s);
+}
