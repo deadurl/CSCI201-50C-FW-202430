@@ -220,3 +220,43 @@ void twelveHrClock::setHour(int h)
         invalidHour();
     }
 }
+
+std::string twelveHrClock::tostring() const
+{
+    return clockType::tostring() + " " + partToStr[partOfDay];
+}
+
+std::string twelveHrClock::getPartOfDay() const
+{
+    return partToStr[partOfDay];
+}
+void twelveHrClock::setPartOfDay(std::string part)
+{
+    std::string partCpy = part;
+    std::transform(partCpy.begin(), partCpy.end(), partCpy.begin(), ::toupper);
+    bool valid = false;
+    for (int i = 0; i < 2; i++)
+    {
+        if (partCpy == partToStr[i])
+        {
+            valid = true;
+            partOfDay = parts[i];
+        }
+    }
+    if (!valid)
+    {
+        std::cout << part << " is not a valid part of day. Your choices are AM or PM. Defaulting to PM." << std::endl;
+        partOfDay = PM;
+    }
+}
+void twelveHrClock::setTime(int hr, int min, int sec)
+{
+    setHour(hr);
+    setMinute(min);
+    setSecond(sec);
+}
+void twelveHrClock::setTime(int hr, int min, int sec, partType part)
+{
+    setTime(hr, min, sec);
+    partOfDay = part;
+}

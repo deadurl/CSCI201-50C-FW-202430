@@ -12,6 +12,7 @@ int main()
     int x = 0;
     timeType t = timeType::TWELVE;
     twelveHrClock tclock(1, 1, 1, PM);
+    std::cout << tclock.tostring() << std::endl;
     tclock.setHour(13);
     std::cout << "How many clocks? ";
     std::cin >> x;

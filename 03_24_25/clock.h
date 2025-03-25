@@ -4,6 +4,7 @@
 #include <string>
 #include <iomanip>
 #include <sstream>
+#include <algorithm>
 
 enum timeType
 {
@@ -59,6 +60,10 @@ public:
     void setHour(int h);
     void invalidHour();
     std::string tostring() const;
+    std::string getPartOfDay() const;
+    void setPartOfDay(std::string);
+    void setTime(int, int, int);
+    void setTime(int, int, int, partType);
 
 private:
     partType partOfDay;
