@@ -195,12 +195,28 @@ std::string clockType::partToStr[2] = {"AM", "PM"};
 
 bool twelveHrClock::validHr() const
 {
-    return getHour() >= 1 && getHour() <= 12;
+    return hr >= 1 && hr <= 12;
 }
 
 void twelveHrClock::invalidHour()
 {
     std::cout << "Hours must be between 1 and 12." << std::endl;
     std::cout << "Defaulting to 12." << std::endl;
-    setHour(12);
+    hr = 12;
+}
+twelveHrClock::twelveHrClock(int h, int m, int s, partType part) : clockType(h, m, s)
+{
+    if (!validHr())
+    {
+        invalidHour();
+    }
+    partOfDay = part;
+}
+void twelveHrClock::setHour(int h)
+{
+    hr = h;
+    if (!validHr())
+    {
+        invalidHour();
+    }
 }

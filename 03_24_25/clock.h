@@ -19,7 +19,7 @@ enum partType
 class clockType
 {
 public:
-    clockType(int = 0, int = 0, int = 0);
+    clockType(int, int, int);
 
     void setTime(int, int, int);
     void getTime(int &, int &, int &) const;
@@ -45,7 +45,7 @@ public:
     static std::string formatToStr[2];
     static std::string partToStr[2];
 
-private:
+protected:
     int hr;
     int min;
     int sec;
@@ -56,7 +56,7 @@ class twelveHrClock : public clockType
 public:
     twelveHrClock(int h, int m, int s, partType part);
     bool validHr() const;
-    // void setHour(int h);
+    void setHour(int h);
     void invalidHour();
     std::string tostring() const;
 

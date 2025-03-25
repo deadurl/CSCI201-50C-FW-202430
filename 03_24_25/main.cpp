@@ -2,6 +2,7 @@
 #include <limits>
 #include <string>
 #include "clock.h"
+#include "clockAgain.h"
 
 clockType clockTick();
 bool codeGradeLoopFix();
@@ -10,7 +11,8 @@ int main()
 {
     int x = 0;
     timeType t = timeType::TWELVE;
-    twelveHrClock tclock;
+    twelveHrClock tclock(1, 1, 1, PM);
+    tclock.setHour(13);
     std::cout << "How many clocks? ";
     std::cin >> x;
     if (codeGradeLoopFix())
@@ -21,6 +23,7 @@ int main()
     }
     clockType myClock(53, 3, 3);
     clockType yourClock(0, 0, 0);
+
     std::cout << x << std::endl;
     std::cout << myClock.tostring() << std::endl;
     myClock.setTime(0, 0, 0);
@@ -52,7 +55,7 @@ int main()
 
 clockType clockTick()
 {
-    static clockType theClock;
+    static clockType theClock(0, 0, 0);
     theClock.incrementSeconds();
     return theClock;
 }
