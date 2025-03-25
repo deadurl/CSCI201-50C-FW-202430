@@ -1,0 +1,51 @@
+10
+12 hour clock
+6
+20
+30
+AM
+12 hour clock
+7
+55
+55
+PM
+12 hour clock
+5
+12
+12
+AM
+12 hour clock
+8
+44
+44
+PM
+12 hour clock
+7
+48
+48
+AM
+24 hour clock
+10
+13
+9
+24 hour clock
+15
+42
+47
+24 hour clock
+2
+16
+40
+24 hour clock
+20
+31
+51
+24 hour clock
+12
+20
+9
+24 hour clock
+14
+34
+14
+24 hour clock
