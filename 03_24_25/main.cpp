@@ -1,6 +1,7 @@
 #include <iostream>
 #include <limits>
 #include <string>
+#include <cmath>
 #include <algorithm>
 #include "clock.h"
 #include "clockAgain.h"
@@ -145,11 +146,40 @@ void makeClock()
             std::cin >> hr;
         }
     }
+    // added input validation
     std::cout << "What is the clock's minute? ";
     std::cin >> min;
-    // add input validation
+    while (!std::cin ||min < 0 || min > 59)
+        {
+            if (codeGradeLoopFix())
+            {
+                return;
+            }
+            else if (!std::cin)
+            {
+                resetStream();
+            }
+            std::cout << "Enter an minute between 0 and 59: ";
+            std::cin >> hr;
+        }
+    
+    // added input validation
     std::cout << "What is the clock's second? ";
     std::cin >> sec;
+    while (!std::cin ||sec < 0 || sec > 59)
+        {
+            if (codeGradeLoopFix())
+            {
+                return;
+            }
+            else if (!std::cin)
+            {
+                resetStream();
+            }
+            std::cout << "Enter a second between 0 and 59: ";
+            std::cin >> hr;
+        }
+    
     // add input validation
     if (clockFormat == TWELVE)
     {
@@ -164,8 +194,23 @@ void makeClock()
             std::cout << part << " is not a valid clock part." << std::endl;
             std::cout << "Is it AM or PM? ";
             std::cin >> p;
+            std::transform(p.begin(), p.end(), p.begin(), ::toupper);
+            while (!std::cin ||p != "AM" || p != "PM")
+            {
+            if (codeGradeLoopFix())
+            {
+                return;
+            }
+            else if (!std::cin)
+            {
+                resetStream();
+            }
+            std::cout << "Is it AM or PM;";
+            std::cin >> p;
+            }
+            
         }
-        std::transform(p.begin(), p.end(), p.begin(), ::toupper);
+        
         bool valid = false;
         for (int i = 0; i < 2; i++)
         {
